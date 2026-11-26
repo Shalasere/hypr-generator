@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>hypr-generator</title>
+<meta name="description" content="Design hyprlock, hypridle and Hyprland's look in the browser, then copy the config.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Martian+Mono:wght@500;700&family=Inconsolata:wght@400;700&family=JetBrains+Mono:wght@400;700&family=IBM+Plex+Mono:wght@400;700&family=Fira+Code:wght@400;700&family=Space+Mono:wght@400;700&family=VT323&display=swap">
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand">
+    <span class="brand-mark" aria-hidden="true">▌</span>
+    <h1>hypr-generator</h1>
+  </div>
+  <nav id="tabs" class="tabs" role="tablist" aria-label="What to configure"></nav>
+  <div class="project">
+    <button type="button" class="btn ghost" id="export">Save project</button>
+    <label class="btn ghost file-btn">Open project<input type="file" id="import" accept="application/json,.json"></label>
+    <button type="button" class="btn ghost" id="reset">Reset this tab</button>
+  </div>
+</header>
+
+<main class="layout">
+  <aside id="side" class="side" aria-label="Settings"></aside>
+
+  <section class="work" aria-label="Preview and output">
+    <div class="toolbar">
+      <div id="toolbar" class="toolbar-left"></div>
+      <div class="toolbar-right">
+        <div id="monitor-wrap" class="inline-field">
+          <label for="monitor">Monitor</label>
+          <select id="monitor"></select>
+        </div>
+        <div id="custom-res" class="inline-field res" hidden>
+          <label for="custom-w" class="sr-only">Width in pixels</label>
+          <input type="number" id="custom-w" min="320" max="15360" step="1" inputmode="numeric">
+          <span aria-hidden="true">×</span>
+          <label for="custom-h" class="sr-only">Height in pixels</label>
+          <input type="number" id="custom-h" min="240" max="8640" step="1" inputmode="numeric">
+        </div>
+        <div id="zoom-wrap" class="seg" role="group" aria-label="Zoom">
+          <button type="button" class="chip" data-zoom="fit" aria-pressed="true">Fit</button>
+          <button type="button" class="chip" data-zoom="1:1" aria-pressed="false">1:1</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="stage" class="stage"><div id="stage-inner" class="stage-inner"></div></div>
+    <p class="stage-foot"><span id="zoom-note"></span></p>
+
+    <div class="output">
+      <div class="output-head">
+        <div>
+          <span class="output-file" id="output-file"></span>
+          <span class="output-path" id="output-path"></span>
+        </div>
+        <div class="row-btns">
+          <button type="button" class="btn" id="copy">Copy</button>
+          <button type="button" class="btn ghost" id="download">Download</button>
+        </div>
+      </div>
+      <pre class="output-code"><code id="output-code"></code></pre>
+    </div>
+  </section>
+</main>
+
+<div id="toast" class="toast" role="status" hidden></div>
+
+<script src="js/util.js"></script>
+<script src="js/fonts.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/hyprlock.js"></script>
+<script src="js/hypridle.js"></script>
+<script src="js/hyprland.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
